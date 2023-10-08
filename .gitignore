@@ -6,7 +6,6 @@
 web/app/vendor/
 web/app/doc/
 web/app/report/
-data/
 
 # PHPStorm
 .idea/**/workspace.xml
@@ -27,6 +26,3 @@ localdev/
 # SSL Certs
 etc/ssl/**
 !etc/ssl/.gitkeep
-
-
-.env

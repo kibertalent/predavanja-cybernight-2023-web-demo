@@ -1,14 +1,16 @@
 <?php
-    include 'config.php';
-    # Check if $USER is set
-    ?>
-<?php include 'header.php'; ?>
-    <p>Učenje je lahko zabavno!</p>
+include 'init.php';
+
+if (isset($USER)) {
+    header('Location: /main.php');
+    die();
+} else {
+?>
+    <?php include 'header.php'; ?>
+    <h2>Učenje je lahko zabavno!</h2>
     <?php
-        if(isset($USER)) {
-            echo "<p>Prijavljeni ste kot $USER</p>";
-        } else {
-            ?>
-            <a href="login.php">Prijava</a>
-        <?php } ?>
+
+    ?>
+    <a href="login.php">Prijava</a>
+<?php } ?>
 <?php include 'footer.php'; ?>
