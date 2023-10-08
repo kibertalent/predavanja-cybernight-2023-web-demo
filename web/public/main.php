@@ -17,6 +17,9 @@ $subjects = $subjects = $db->fetchAll("SELECT * FROM subjects");
 ?>
 
 <?php include 'header.php'; ?>
+
+<p>Pozdravljen, <?php echo $USER['username']; ?>!</p>
+
 <h2>Pregled predmetov</h2>
 <ul>
     <?php foreach ($subjects as $subject) : ?>
