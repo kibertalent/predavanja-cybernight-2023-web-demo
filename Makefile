@@ -21,6 +21,9 @@ up: .env
 	@echo "Copied .env.example to .env"
 	@cp .env.example .env
 
+down: .env
+	@echo "Stopping docker containers"
+	@$(DOCKER_COMPOSE) down --remove-orphans --volumes
 
 reset-db:
 	@echo "Resetting database"
