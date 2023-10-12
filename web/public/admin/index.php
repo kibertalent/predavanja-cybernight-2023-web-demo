@@ -18,7 +18,7 @@ $users = $db->fetchAll("SELECT * FROM users");
 
 
 <h2>Pregled uporabnikov</h2>
-<ul>
+<ul id="users">
     <?php foreach ($users as $user) : ?>
         <li>
             <a href="/admin/user.php?id=<?php echo $user['id']; ?>">
