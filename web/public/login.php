@@ -21,7 +21,7 @@ include 'init.php';
         }
 
         # Check password
-        if(!password_verify($_POST['password'], $user['password'])) {
+        if(md5($_POST['password']) != $user['password']) {
             error_die('Napačno geslo');
         }
 

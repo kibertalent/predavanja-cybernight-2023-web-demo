@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Oct 08, 2023 at 10:00 PM
+-- Generation Time: Oct 12, 2023 at 06:37 PM
 -- Server version: 8.0.21
 -- PHP Version: 8.2.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cn_demo`
+-- Database: `fasistent`
 --
 
 DROP DATABASE IF EXISTS `cn_demo`;
@@ -26,11 +26,13 @@ DROP DATABASE IF EXISTS `fasistent`;
 
 CREATE DATABASE IF NOT EXISTS `fasistent` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `fasistent`;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `grades`
 --
+
 DROP TABLE IF EXISTS `grades`;
 CREATE TABLE `grades` (
   `id` int NOT NULL,
@@ -124,14 +126,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', '$2y$10$TAwNe5zRhiZvq5DPfFbmROtBOeCosBtslVUW/AkBMlkhp4vhL874S', 'admin'),
-(2, 'Tadej', '$2y$10$3CQdHKRsl6T/8MTGL1cIgekeM/T4BOjiyOTpL09is6KahPtL2wdh.', 'teacher'),
-(3, 'Aljaz', '$2y$10$gn6l5Lbgu4wy/V3UJuujk.xh5GolrXj/0god5K6okMYkM7DnfNcn2', 'teacher'),
-(4, 'Manja', '$2y$10$zYTCDsZktWdlAvhZi.9nq.Sw0NpIcbmpYkdji0KUxszeTSZL3QVDW', 'teacher'),
-(5, 'FranciNaBalanci', '$2y$10$liUfhiAQjrNysbe0syMhku2k7Zu4o6lJvSQSFMJNNZb9Adl1WvAaO', 'student'),
-(6, 'test', '$2y$10$KMKdPWuYWiz2jJJeXQgtj.wK2Qd7kEoeM9wcRXxo7f2pSjYlno656', 'student'),
-(7, 'JakaNovak', '$2y$10$vMygSk5F1VRWE6scLA4QFOdK3c3SfYo5n1Jz27BPgoFJAZi0tJdOm', 'student'),
-(10, 'anze', '$2y$10$7UwNxzgxa35eBk.A7pN3UO76t07xcY6BIonUwy0jMVfVnEzcgYPWi', 'student');
+(1, 'admin', '2b65c3017149ffa86d13dd75639e97e0', 'admin'),
+(2, 'Tadej', '709a31b1ebd7a0230bd413f32661061a', 'teacher'),
+(3, 'Aljaz', 'd008b35ed33449e584632397f7b45553', 'teacher'),
+(4, 'Manja', '25f9e794323b453885f5181f1b624d0b', 'teacher'),
+(5, 'FranciNaBalanci', '2e8f2fff77a1dd6be8dd5b2f2e5b02e5', 'student'),
+(7, 'JakaNovak', '89027d8ca2ee716eefb16cdfe6265ca5', 'student');
 
 -- --------------------------------------------------------
 

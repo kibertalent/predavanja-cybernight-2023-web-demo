@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Create user
     $db->execute("INSERT INTO users (username, password) VALUES (?, ?)", [
         $_POST['username'],
-        password_hash($_POST['password'], PASSWORD_DEFAULT)
+        md5($_POST['password'])
     ]);
 
     insert_demo_grades($db->lastInsertId());
