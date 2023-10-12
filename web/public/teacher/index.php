@@ -13,15 +13,18 @@ $subjects = $db->fetchAll("SELECT * FROM users_subjects INNER JOIN subjects ON u
 ?>
 
 <?php include '../header.php'; ?>
-    <h2>Pregled predmetov</h2>
-    <ul>
-        <?php foreach ($subjects as $subject): ?>
-            <li>
-                <a href="/teacher/subject.php?id=<?php echo $subject['subject_id']; ?>">
-                    <?php echo $subject['name']; ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-    <a href="/logout.php">Odjava</a>
+
+<p>Pozdravljen, <?php echo $USER['username']; ?>!</p>
+
+<h2>Pregled predmetov</h2>
+<ul>
+    <?php foreach ($subjects as $subject) : ?>
+        <li>
+            <a href="/teacher/subject.php?id=<?php echo $subject['subject_id']; ?>">
+                <?php echo $subject['name']; ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<a href="/logout.php">Odjava</a>
 <?php include '../footer.php'; ?>
