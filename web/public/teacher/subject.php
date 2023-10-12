@@ -30,7 +30,7 @@ $students = $db->fetchAll("SELECT * FROM users WHERE role = 'student'");
     <p>Ni ocen</p>
 <?php else : ?>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Ime</th>
@@ -44,7 +44,7 @@ $students = $db->fetchAll("SELECT * FROM users WHERE role = 'student'");
                     <td><?php echo $grade['username']; ?></td>
                     <td><?php echo $grade['grade']; ?></td>
                     <td>
-                        <a href="/teacher/delete_grade.php?grade_id=<?php echo $grade['grade_id']; ?>">Izbriši</a>
+                        <a href="/teacher/delete_grade.php?grade_id=<?php echo $grade['grade_id']; ?>" class="btn btn-danger btn-sm">Izbriši</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -54,7 +54,7 @@ $students = $db->fetchAll("SELECT * FROM users WHERE role = 'student'");
 <?php endif; ?>
 
 <!-- Add grade -->
-<form action="/teacher/add_grade.php" method="get">
+<!-- <form action="/teacher/add_grade.php" method="get">
     <input type="hidden" name="return_to" value="/teacher/subject.php?id=<?php echo $subject_id; ?>">
     <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">
     <label for="student_id">Učenec</label>
@@ -66,8 +66,26 @@ $students = $db->fetchAll("SELECT * FROM users WHERE role = 'student'");
     <label for="grade">Ocena</label>
     <input type="number" name="grade" id="grade">
     <input type="submit" value="Dodaj oceno">
+</form> -->
+
+<form action="/teacher/add_grade.php" method="get" class="form-inline">
+    <input type="hidden" name="return_to" value="/teacher/subject.php?id=<?php echo $subject_id; ?>">
+    <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">
+    <div class="form-group">
+        <label for="student_id">Učenec</label>
+        <select name="student_id" id="student_id" class="form-control">
+            <?php foreach ($students as $student) : ?>
+                <option value="<?php echo $student['id']; ?>"><?php echo $student['username']; ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="grade">Ocena</label>
+        <input type="number" name="grade" id="grade" class="form-control">
+    </div>
+    <input type="submit" value="Dodaj oceno" class="btn btn-primary">
 </form>
 
-<a href="/teacher/index.php">Nazaj</a>
+<a href="/teacher/index.php" class="btn btn-secondary my-5">Nazaj</a>
 
 <?php include '../footer.php'; ?>

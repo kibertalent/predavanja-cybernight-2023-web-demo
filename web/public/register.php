@@ -42,17 +42,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php include 'header.php'; ?>
-<form method="post">
-    <label for="username">Uporabniško ime</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Geslo</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="Registracija">
+<form method="post" class="w-25 mx-auto mt-5">
+    <div class="form-outline mb-4">
+        <label class="form-label" for="username">Uporabniško ime</label>
+        <input type="text" name="username" id="username" class="form-control" />
+    </div>
 
-    <a href="/login.php">Prijava</a>
-
+    <div class="form-outline mb-4">
+        <label class="form-label" for="password">Geslo</label>
+        <input type="password" name="password" id="password" class="form-control" />
+    </div>
+    
     <?php if (isset($_GET['err'])) : ?>
-        <p class="error"><?php echo $_GET['err']; ?></p>
+        <p class="text-danger"><?php echo $_GET['err']; ?></p>
     <?php endif; ?>
+    
+    <button type="submit" class="btn btn-primary">Registracija</button>
+
+
+    <p class="mt-4">
+        Že imate račun? <a href="/login.php">Prijava</a>
+    </p>
+
 </form>
 <?php include 'footer.php'; ?>

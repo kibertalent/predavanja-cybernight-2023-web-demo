@@ -20,20 +20,31 @@ $grades = $db->fetchAll("SELECT * FROM grades WHERE subject_id = ? AND student_i
 ?>
 
 <?php include 'header.php'; ?>
-<h2><?php echo $subject['name']; ?></h2>
+<h2 class="text-center">Predmet: <?= $subject['name'] ?></h2>
 
 
 <?php if (count($grades) == 0) : ?>
     <p>Ni ocen</p>
 <?php else : ?>
-    <ul>
-        <?php foreach ($grades as $grade) : ?>
-            <li>
-                <b><?= $grade['grade'] ?></b>
-                (<?= $grade['timestamp'] ?>)
-            </li>
-        <?php endforeach; ?>
-    </ul>
+    <!-- List of grades with timestamps -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ocena</th>
+                <th>Datum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($grades as $grade) : ?>
+                <tr>
+                    <td><h2><span class="badge <?= $grade['grade'] < 2 ? 'bg-danger' : 'bg-success' ?>"><?= $grade['grade'] ?></span></h2></td>
+                    <td><?= $grade['timestamp'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 <?php endif; ?>
-<a href="/main.php">Nazaj</a>
+
+<a class="btn btn-primary" href="/main.php">Nazaj</a>
+
 <?php include 'footer.php'; ?>
