@@ -8,7 +8,7 @@ else
   $(error "docker-compose is not installed")
 endif
 
-
+.PHONY: build up
 build:
 	@echo "Building docker containers"
 	@$(DOCKER_COMPOSE) build
@@ -20,3 +20,14 @@ up: .env
 .env:
 	@echo "Copied .env.example to .env"
 	@cp .env.example .env
+
+
+reset-db:
+	@echo "Resetting database"
+# Source .env and run command
+	@bash -c 'source ./.env && \
+		cat sql/reset.sql | \
+		$(DOCKER_COMPOSE) exec -T mysql mysql \
+			--user=$$MYSQL_ROOT_USER \
+			--password=$$MYSQL_ROOT_PASSWORD' \
+			--database=$$MYSQL_DATABASE
