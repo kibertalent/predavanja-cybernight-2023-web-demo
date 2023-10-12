@@ -24,3 +24,6 @@ $db->execute("UPDATE users SET username = ?, password = ?, role = ? WHERE id = ?
     $_POST['role'],
     $user_id
 ]);
+
+header('Location: /admin/index.php');
+die();
