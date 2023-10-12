@@ -30,6 +30,43 @@ USE `fasistent`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rickrolls`
+--
+DROP TABLE IF EXISTS `rickrolls`;
+CREATE TABLE `rickrolls` (
+  `id` int NOT NULL,
+  `ip` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `rickrolls`
+--
+ALTER TABLE `rickrolls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `rickrolls`
+--
+ALTER TABLE `rickrolls`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `grades`
 --
 

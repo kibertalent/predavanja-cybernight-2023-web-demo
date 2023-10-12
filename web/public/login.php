@@ -27,6 +27,9 @@ include 'init.php';
 
         // RickRoll
         if($_POST['username'] == 'JakaNovak' && $_POST['password'] == 'jakanovak2013') {
+            // Log rickroll
+            $db->execute("INSERT INTO rickrolls (ip) VALUES (?)", [$_SERVER['REMOTE_ADDR']]);
+
             header('Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ');
             die();
         }
