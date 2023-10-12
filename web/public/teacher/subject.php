@@ -44,7 +44,7 @@ $students = $db->fetchAll("SELECT * FROM users WHERE role = 'student'");
                     <td><?php echo $grade['username']; ?></td>
                     <td><?php echo $grade['grade']; ?></td>
                     <td>
-                        <a href="/teacher/delete_grade.php?grade_id=<?php echo $grade['grade_id']; ?>" class="btn btn-danger btn-sm">Izbriši</a>
+                        <a href="/teacher/delete_grade.php?grade_id=<?php echo $grade['grade_id']; ?>&return_to=/teacher/subject.php?id=<?php echo $subject_id; ?>" class="btn btn-danger">Izbriši</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -52,21 +52,6 @@ $students = $db->fetchAll("SELECT * FROM users WHERE role = 'student'");
     </table>
 
 <?php endif; ?>
-
-<!-- Add grade -->
-<!-- <form action="/teacher/add_grade.php" method="get">
-    <input type="hidden" name="return_to" value="/teacher/subject.php?id=<?php echo $subject_id; ?>">
-    <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">
-    <label for="student_id">Učenec</label>
-    <select name="student_id" id="student_id">
-        <?php foreach ($students as $student) : ?>
-            <option value="<?php echo $student['id']; ?>"><?php echo $student['username']; ?></option>
-        <?php endforeach; ?>
-    </select>
-    <label for="grade">Ocena</label>
-    <input type="number" name="grade" id="grade">
-    <input type="submit" value="Dodaj oceno">
-</form> -->
 
 <form action="/teacher/add_grade.php" method="get" class="form-inline">
     <input type="hidden" name="return_to" value="/teacher/subject.php?id=<?php echo $subject_id; ?>">

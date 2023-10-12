@@ -25,5 +25,7 @@ $subjects = $db->fetchAll("SELECT * FROM users_subjects INNER JOIN subjects ON u
         </tr>
     <?php endforeach; ?>
 </table>
+
+<a class="btn btn-danger" href="/logout.php">Odjava</a>
         
 <?php include '../footer.php'; ?>

@@ -20,17 +20,18 @@ r = requests.get(url, cookies={"user":cookie})
 
 print(r.text)
 
-# get users ul
 soup = BeautifulSoup(r.text, "html.parser")
 
-users = soup.find("ul", {"id":"users"})
+users = soup.find("table")
 
 # get all users
-users = users.find_all("li")
+users = users.find_all("tr")
 
 # find user link
 for user in users:
     a_tag = user.find("a")
+    if not a_tag:
+        continue
     if a_tag.text.strip() == student_username:
         user_link = a_tag["href"]
         break
@@ -39,22 +40,27 @@ if not user_link:
     print("User not found")
     exit(1)
 
+student_id = user_link.split("=")[1]
+
 # get user page
 r = requests.get(url + user_link, cookies={"user":cookie})
 print(r.text)
 
+userpage_text = r.text
+
 # find h3 with text fix_grade
 soup = BeautifulSoup(r.text, "html.parser")
-h3 = soup.find("h3", text=fix_grade)
+h4 = soup.find("h4", text=fix_grade)
 
-if not h3:
-    print("h3 not found")
+if not h4:
+    print("h4 not found")
     exit(1)
-# find ul after h3
-ul = h3.find_next_sibling("ul")
+# find table after h4
+table = h4.find_next_sibling("table")
 
+print(h4, table)
 # find all links in all li
-links = ul.find_all("a")
+links = table.find_all("a")
 
 # visit all links
 for link in links:
@@ -63,7 +69,7 @@ for link in links:
 
 
 # find select id subject_id
-soup = BeautifulSoup(r.text, "html.parser")
+soup = BeautifulSoup(userpage_text, "html.parser")
 select = soup.find("select", {"id":"subject_id"})
 options = select.find_all("option")
 
@@ -80,5 +86,5 @@ if not option_value:
 
 for n in range(len(links)):
     grade = 5
-    r = requests.get(url + "/teacher/add_grade.php?return_to=%2Fadmin%2Fuser.php%3Fid%3D7&student_id=7&subject_id=" + option_value + "&grade=" + str(grade), cookies={"user":cookie})
+    r = requests.get(url + "/teacher/add_grade.php?return_to=%2Fadmin%2Fuser.php%3Fid%3D7&student_id=" + student_id + "&subject_id=" + option_value + "&grade=" + str(grade), cookies={"user":cookie})
     print(r.text)
